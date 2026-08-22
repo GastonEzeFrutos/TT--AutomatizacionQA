@@ -12,13 +12,22 @@ def dividir (a,b):
         raise ValueError ("No podes dividir por cero (0).")
     return a / b
 
+# Para que no rompa cuando ingresa una letra
+def pedir_numero(mensaje):
+    while True:
+        try:
+            return float(input(mensaje))
+        except ValueError:
+            print("Error: Ingresá un número válido (no se permiten letras).")
+
+
 
 # Menu interactivo
 
 def calculadora ():
     print ("\n ----- CALCULADORA DE PYTHON ----- ")
-    a = float(input("Primer número: "))
-    b = float(input("Segundo número: "))
+    a = pedir_numero("Primer número: ")
+    b = pedir_numero("Segundo número: ")
     print ("1) Sumar 2) Restar 3) Multiplicar 4) Dividir")
     opcion = input("Elegi un numero entre 1-4: ")
     try:
@@ -27,7 +36,7 @@ def calculadora ():
         elif opcion == '3': resultado = multiplicar(a,b)
         elif opcion == '4': resultado = dividir(a,b)
         else:
-            print("Opcioón invalido.")
+            print("Opción invalido.")
             return 
         print (f"Resultado : {resultado}")
     except ValueError as e:
