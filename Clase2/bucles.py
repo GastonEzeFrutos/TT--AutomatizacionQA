@@ -40,3 +40,13 @@ while contraseña != "1234" and contador_contraseña < 3:
         print("Contraseña incorrecta, intente nuevamente.")
         contador_contraseña += 1
 print("Llegaste al limite de intentos, intente más tarde.")
+
+# Break
+
+sumatoria = 0
+
+while sumatoria < 10:
+    print(sumatoria)
+    if sumatoria == 3:
+        break
+    sumatoria = sumatoria + 1
