@@ -10,9 +10,9 @@ try:
    
 except ZeroDivisionError:
     print("Error: estas dividiendo por cero.")
-#except ValueError:
-#    print("Error: solo ingresar numeros enteros.")
-except Exception as error:
-    print (error)
+except ValueError:
+    print("Error: solo ingresar numeros enteros.")
+#except Exception as error:
+#    print (error)
 finally:
     print("Fin del programa")
