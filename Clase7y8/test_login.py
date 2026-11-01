@@ -2,17 +2,35 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
-driver = webdriver.Chrome()
+def test_login_exitoso():
+    # Iniciar el navegador
+    driver = webdriver.Chrome()
 
-driver.get("https://www.saucedemo.com/")
+    # Abrir pagina
+    driver.get("https://www.saucedemo.com/")
 
-time.sleep(2)  # Espera 2 segundos para que la página cargue completamente
+    # Localizar elementos
+    usuario = driver.find_element(By.ID,"user-name")
+    password = driver.find_element(By.ID,"password")
+    boton_login = driver.find_element(By.ID,"login-button")
 
-driver.find_element(By.ID, "user-name").send_keys("standard_user")
-time.sleep(1)  # Espera 1 segundo antes de ingresar la contraseña
-driver.find_element(By.ID, "password").send_keys("secret_sauce")
-time.sleep(1)  # Espera 1 segundo antes de hacer clic en el botón de inicio de sesión
-driver.find_element(By.ID, "login-button").click()
+    
 
-time.sleep(2)  # Espera 2 segundos antes de cerrar el navegador
-driver.quit()
+    # Completar el formulario
+    usuario.send_keys("standard_user")
+    password.send_keys("secret_sauce")
+
+    time.sleep(2)
+
+    # Hacer login
+    boton_login.click()
+
+    titulo = driver.find_element(By.CSS_SELECTOR,'[data-test="title"]')
+
+    # Validar el URL despues del login
+    assert driver.current_url == "https://www.saucedemo.com/inventory.html"
+    assert titulo.text == "Products"
+
+    driver.quit()
+
+# arrancar con python -m pytest test_login.py
