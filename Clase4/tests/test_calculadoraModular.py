@@ -8,7 +8,7 @@ def test_suma_correcto():
 
     assert resultado == 8
 
-@pytest.mark.operador
+@pytest.mark.smoke
 def test_suma_error():
     resultado = sumar(5,3)
 
@@ -20,7 +20,7 @@ def test_resta_correcto():
 
     assert resultado == 6
 
-@pytest.mark.operador
+@pytest.mark.smoke
 def test_resta_error():
     resultado = restar(10,4)
 
@@ -32,7 +32,7 @@ def test_multiplicacion_correcto():
 
     assert resultado == 15
 
-@pytest.mark.operador
+@pytest.mark.smoke
 def test_multiplicacion_error():
     resultado = multiplicar(5,3)
 
@@ -88,3 +88,7 @@ def test_sumar_flotantes(numeros_flotantes):
 )
 def test_sumar_varios(a, b, esperado):
     assert sumar(a, b) == esperado
+
+# py -m pytest --> para ejecutarlo
+# pytest -m smoke --> solo tests “sumar”
+# pytest -m exception --> solo tests “dividir” con erro
