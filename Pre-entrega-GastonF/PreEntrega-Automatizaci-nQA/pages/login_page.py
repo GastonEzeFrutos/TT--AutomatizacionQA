@@ -17,6 +17,9 @@ class LoginPage:
     def hacer_click_login(self):
         self.driver.find_element(By.ID, "login-button").click()
 
+    def get_error_message(self):
+        self.wait.until(EC.visibility_of_element_located(By.CSS_SELECTOR,".error > h3"))
+
     def login(self, usuario, password):
         self.ingresar_usuario(usuario)
         self.ingresar_password(password)
