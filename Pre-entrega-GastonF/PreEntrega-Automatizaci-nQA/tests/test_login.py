@@ -14,3 +14,6 @@ def test_login(driver,data):
     if data["tipo_usuario"] == "user_ok":
         assert "/inventory.html" in driver.current_url
     elif data["tipo_usuario"] == "user_error":
+        error = login_page.get_error_message()
+        print(error)
+        assert "Epic sadface" in error

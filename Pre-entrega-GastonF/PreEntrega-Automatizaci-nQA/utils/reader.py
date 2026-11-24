@@ -8,3 +8,10 @@ def read_users_csv():
 
 data = read_users_csv()
 print(data)
+
+def read_productos_json():
+    with open("data/products.json") as file:
+        return json.load(file)
+
+data = read_productos_json()
+print (data)
